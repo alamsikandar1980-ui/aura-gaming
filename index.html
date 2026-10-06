@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AURA GAMING</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07070d;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 12, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #252535;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #00f7ff;
+            text-shadow: 0 0 15px #00f7ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00f7ff;
+            text-shadow: 0 0 10px #00f7ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background:
+                radial-gradient(circle at 50% 40%, #132d45 0%, #07070d 45%, #030306 100%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            letter-spacing: 8px;
+            color: white;
+            text-shadow:
+                0 0 10px #00f7ff,
+                0 0 30px #00f7ff,
+                0 0 60px #006eff;
+        }
+
+        .hero p {
+            margin: 20px 0 30px;
+            color: #b9c5d6;
+            font-size: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            margin: 8px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #000;
+            background: #00f7ff;
+            box-shadow: 0 0 20px #00f7ff;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 0 35px #00f7ff;
+        }
+
+        .btn.dark {
+            color: white;
+            background: transparent;
+            border: 1px solid #00f7ff;
+            box-shadow: none;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            color: #00f7ff;
+            text-shadow: 0 0 15px #00f7ff;
+        }
+
+        .section-title p {
+            color: #8993a5;
+            margin-top: 10px;
+        }
+
+        /* GAME CARDS */
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: #10101a;
+            border: 1px solid #28283a;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.35s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: #00f7ff;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.3);
+        }
+
+        .game-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .game-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            color: #9299a8;
+            line-height: 1.6;
+        }
+
+        /* TOURNAMENT */
+        .tournament {
+            background: linear-gradient(135deg, #10101b, #091c27);
+            border: 1px solid #263848;
+            border-radius: 20px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.08);
+        }
+
+        .tournament h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .prize {
+            font-size: 42px;
+            font-weight: bold;
+            color: #00f7ff;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #00f7ff;
+        }
+
+        .details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 35px;
+            color: #b8c0ce;
+            margin-bottom: 25px;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background: #0e0e17;
+            border: 1px solid #222232;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature span {
+            font-size: 40px;
+        }
+
+        .feature h3 {
+            margin: 15px 0 8px;
+        }
+
+        .feature p {
+            color: #8d95a5;
+        }
+
+        /* ABOUT */
+        .about {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #aeb6c4;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #030306;
+            border-top: 1px solid #20202d;
+            color: #777f8d;
+        }
+
+        footer strong {
+            color: #00f7ff;
+        }
+
+        /* MOBILE */
+        @media (max-width: 650px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero h1 {
+                letter-spacing: 3px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+
+            .tournament {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">AURA GAMING</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#tournament">Tournaments</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>AURA</h1>
+
+            <p>
+                ENTER THE GAME. BUILD YOUR AURA. BECOME LEGENDARY.
+            </p>
+
+            <a href="#games" class="btn">EXPLORE GAMES</a>
+
+            <a href="#tournament" class="btn dark">TOURNAMENTS</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- GAMES -->
+    <section id="games">
+
+        <div class="section-title">
+            <h2>POPULAR GAMES</h2>
+            <p>Choose your battlefield.</p>
+        </div>
+
+        <div class="games">
+
+            <div class="game-card">
+                <div class="game-icon">🔫</div>
+                <h3>Battle Royale</h3>
+                <p>Survive, fight and become the last player standing.</p>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon">⚔️</div>
+                <h3>War Legends</h3>
+                <p>Enter an epic battlefield and defeat your enemies.</p>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon">🏎️</div>
+                <h3>Street Racing</h3>
+                <p>Race at insane speeds and become the champion.</p>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon">👾</div>
+                <h3>Cyber Arena</h3>
+                <p>Fight through a futuristic world of powerful enemies.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOURNAMENT -->
+    <section id="tournament">
+
+        <div class="section-title">
+            <h2>UPCOMING TOURNAMENT</h2>
+            <p>Are you ready to compete?</p>
+        </div>
+
+        <div class="tournament">
+
+            <h3>AURA CHAMPIONSHIP</h3>
+
+            <div class="prize">
+                ₹50,000
+            </div>
+
+            <div class="details">
+                <span>🎮 Solo & Squad</span>
+                <span>🏆 Grand Prize</span>
+                <span>🔥 Open Entry</span>
+            </div>
+
+            <a href="#" class="btn" onclick="joinTournament()">
+                JOIN NOW
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section>
+
+        <div class="section-title">
+            <h2>WHY AURA GAMING?</h2>
+            <p>Everything a gamer needs.</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <span>🏆</span>
+                <h3>Competitive</h3>
+                <p>Compete with gamers and prove your skills.</p>
+            </div>
+
+            <div class="feature">
+                <span>⚡</span>
+                <h3>Fast Action</h3>
+                <p>Experience exciting and intense gaming battles.</p>
+            </div>
+
+            <div class="feature">
+                <span>👥</span>
+                <h3>Community</h3>
+                <p>Connect with gamers and build your squad.</p>
+            </div>
+
+            <div class="feature">
+                <span>🎯</span>
+                <h3>Skill</h3>
+                <p>Improve your gameplay and become a better player.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>ABOUT AURA</h2>
+        </div>
+
+        <div class="about">
+
+            <p>
+                AURA GAMING is a gaming community created for players
+                who love competition, teamwork and entertainment.
+                Discover new games, join tournaments and show the world
+                what you can do.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 <strong>AURA GAMING</strong> | All Rights Reserved
+        </p>
+
+        <p style="margin-top:10px;">
+            Built for gamers. Powered by passion. 🎮
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function joinTournament() {
+
+            alert(
+                "🔥 Welcome to AURA GAMING!\n\n" +
+                "Tournament registration will open soon."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
+
